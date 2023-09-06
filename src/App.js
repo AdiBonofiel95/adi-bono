@@ -9,22 +9,23 @@ function App() {
   }
 
   const form = document.getElementById('frm');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-  const formData = new FormData(form);
-  
+    if (form){
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
 
 
-  const formDataJSON = {};
+    const formData = new FormData(form);
 
-  formData.forEach((value, key) => {
-    formDataJSON[key] = value;
+
+    const formDataJSON = {};
+
+    formData.forEach((value, key) => {
+      formDataJSON[key] = value;
+    });
+
+    console.log(formDataJSON);
   });
-
-  console.log(formDataJSON);
-});
-
+}
 
   return (
     <div className="App">
@@ -42,7 +43,7 @@ function App() {
         { accountType === accountTypes.Advanced && 
           (<p>Port: <input type='text' id='port' name='port' /> <input type='checkbox' id='ssl' name='ssl'/>Use SSL</p>)
         }
-        <button type="submit">Submit</button>
+        <button type="submit" id='submit' name='submit'>Submit</button>
       </form>
     </div>
   );

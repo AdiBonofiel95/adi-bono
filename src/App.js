@@ -1,5 +1,7 @@
 // import { useState } from 'react';
 // import accountTypes from './AccountTypes';
+import { useState } from 'react';
+import DarkModeButton from './DarkModeButton';
 import TaskList from './TaskList';
 
 function App() {
@@ -28,9 +30,15 @@ function App() {
 //   });
 // }
 
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
     <div className="App">
-      <h1>Task List</h1>
+      <div style={{display:"flex", flexDirection: "row", gap: "10px"}}>
+        <h1>Task List</h1>
+        <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+        <h2>{darkMode ? "Dark mode on" : "Light mode on"}</h2>
+      </div>
       <TaskList/>
 
     </div>

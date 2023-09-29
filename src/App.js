@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 // import accountTypes from './AccountTypes';
-import TaskList from './TaskList';
+import NavBar from "./NavBar";
 
 function App() {
   // const [accountType, setAccountType] = useState(accountTypes.Manual);
@@ -30,9 +30,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Task List</h1>
-      <TaskList/>
-
+      <NavBar />
+      {/* Still need to be done - save states in "Task List" so it saves the tasks once page switched */}
     </div>
   );
 }

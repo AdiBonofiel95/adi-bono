@@ -45,6 +45,7 @@ function TaskList() {
 
     return (
         <div style={{paddingLeft: 10}}> 
+            <h1>Task List</h1>
             <p style={{display:'flex', gap:4}}>Insert Task: 
                 <input type="text" 
                 id="task track" 

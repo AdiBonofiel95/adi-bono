@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function TaskList() {
-    const exmpa = ['a', 'b', 'c', 'd'];
     const [taskTrack, setTaskTrack] = useState("");
+    const focusIn = useRef(null)
     let [tasks, setTasks] = useState([]);
 
     const typeTreack = (event) => setTaskTrack(event.target.value)
@@ -19,6 +19,7 @@ function TaskList() {
 
         setTasks([...tasks, taskTrack]);
         setTaskTrack("");
+        focusIn.current.focus();
     }
 
     const onKeyUpHandler = (event) => {
@@ -31,6 +32,7 @@ function TaskList() {
         const newList = [...tasks];
         newList.splice(idx, 1);
         setTasks(newList);
+        focusIn.current.focus();
     }
     
     const displayTasks = (item, idx) => {
@@ -48,14 +50,18 @@ function TaskList() {
                 id="task track" 
                 className="task track"
                 value={taskTrack}
+                ref={focusIn}
                 onChange={typeTreack} 
                 onKeyUp={onKeyUpHandler}
-                placeholder="buy veggies"></input>
+                placeholder="buy veggies"
+                autoFocus/>
                 <button 
                 type="submit" 
                 id="submit button"
-                onClick={onSubmit}>submit</button>
-                </p>
+                onClick={onSubmit}>
+                    submit
+                </button>
+            </p>
             <ul>
                 {tasks.map(displayTasks)}
             </ul>
